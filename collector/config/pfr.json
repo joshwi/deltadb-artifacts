@@ -1,0 +1,355 @@
+[
+    {
+        "Name": "pfr_map_team",
+        "Tag": {
+            "name": "pfr_map_team",
+            "value": "pfr_map_team"
+        },
+        "Urls": [
+            "https://www.pro-football-reference.com/teams"
+        ],
+        "Params": [],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "teams",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv class=.table_container. id=.div_teams_active.\u003e.*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth[^\u003e]+\u003e\u003ca href=.\\/teams\\/(?P\u003ctag\u003e(.*?))\\/.\u003e(?P\u003cteam\u003e(.*?))\u003c\\/a\u003e\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e(?P\u003cyear_min\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cyear_max\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cwin\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003closs\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003ctie\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cwin_perc\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e\u003ca href=.(?P\u003ctop_player_url\u003e(.*?)). title[^\u003e]+\u003e(?P\u003ctop_player\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e\u003ca href=.(?P\u003ctop_pass_url\u003e(.*?)). title[^\u003e]+\u003e(?P\u003ctop_pass\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e\u003ca href=.(?P\u003ctop_rush_url\u003e(.*?)). title[^\u003e]+\u003e(?P\u003ctop_rush\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e\u003ca href=.(?P\u003ctop_rec_url\u003e(.*?)). title[^\u003e]+\u003e(?P\u003ctop_rec\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e\u003ca href=.(?P\u003ctop_coach_url\u003e(.*?)). title[^\u003e]+\u003e(?P\u003ctop_coach\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cplayoff_yrs\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cplayoff_win\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cplayoff_loss\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cplayoff_perc\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cchamps\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003csb_champs\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cconf_champs\u003e(.*?))\u003c\\/td\u003e\u003ctd[^\u003e]+\u003e(?P\u003cdiv_champs\u003e(.*?))\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pfr_map_season",
+        "Tag": {
+            "name": "pfr_map_season",
+            "value": "pfr_map_season"
+        },
+        "Urls": [
+            "https://www.pro-football-reference.com/years"
+        ],
+        "Params": [],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "years",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv class=\"table_container\" id=\"div_years\"\u003e.*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth.*?\u003e\u003ca href=\"(?P\u003curl\u003e(\\/years\\/\\d{4}\\/))\"\u003e(?P\u003cyear\u003e(\\d{4}))\u003c\\/a\u003e\u003c\\/th\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pfr_map_player",
+        "Tag": {
+            "name": "pfr_map_player",
+            "value": "pfr_map_player"
+        },
+        "Urls": [
+            "https://www.pro-football-reference.com/players/{letter}"
+        ],
+        "Params": [
+            "letter"
+        ],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "players",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv class=.section_content. id=.div_players.\u003e.*?\u003c\\/div\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cp\u003e.*?\u003ca href=.(?P\u003curl\u003e(.*?)).\u003e(?P\u003cname\u003e(.*?))\u003c\\/a\u003e(.*?)\\((?P\u003cpos\u003e(.*?))\\)(.*?)(?P\u003crookie_year\u003e([0-9]{4}))-(?P\u003clast_year\u003e([0-9]{4})).*?\u003c\\/p\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pfr_team_season",
+        "Tag": {
+            "name": "pfr_team_season",
+            "value": "pfr_team_season"
+        },
+        "Urls": [
+            "https://www.pro-football-reference.com/teams/{tag}/{year}.htm"
+        ],
+        "Params": [
+            "tag",
+            "year"
+        ],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv data-template=.Partials\\/Teams\\/Summary.\u003e.*?\u003ch1 itemprop=.name.\u003e.*?\u003cspan class=.header_end.\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "(?ms)\u003cspan.*?\u003e.*?\u003c\\/span\u003e.*?\u003cspan\u003e(?P\u003cteam\u003e(.*?))\u003c\\/span\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003eCoach:\u003c\\/strong\u003e.*?\u003c\\/p\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "(?ms)\u003ca.*?\u003e(?P\u003chc\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003eOffensive Coordinator:\u003c\\/strong\u003e.*?\u003c\\/p\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "(?ms)\u003ca.*?\u003e(?P\u003coc\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003eDefensive Coordinator:\u003c\\/strong\u003e.*?\u003c\\/p\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "(?ms)\u003ca.*?\u003e(?P\u003cdc\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003e(Chairman.*?|Owner.*?|Principal Owner.*?)\u003c\\/strong\u003e.*?\u003ca.*?\u003e(?P\u003cowner\u003e(.*?))\u003c\\/a\u003e.*?\u003c\\/p\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003e(Stadium.*?)\u003c\\/strong\u003e.*?\u003ca.*?\u003e(?P\u003cstadium\u003e(.*?))\u003c\\/a\u003e.*?\u003c\\/p\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003e(Executive VP.*?|General Manager.*?)\u003c\\/strong\u003e.*?\u003ca.*?\u003e(?P\u003cgm\u003e(.*?))\u003c\\/a\u003e.*?\u003c\\/p\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003eOffensive Scheme:\u003c\\/strong\u003e.*?(?P\u003coff\u003e(.*?)).*?\u003c\\/p\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cp\u003e\u003cstrong\u003eDefensive Alignment:\u003c\\/strong\u003e.*?(?P\u003cdef\u003e(.*?)).*?\u003c\\/p\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "games",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ccaption\u003eSchedule.*?Game.*?\u003c\\/caption\u003e.*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ctr.*?\u003e\u003cth.*?\u003e(?P\u003cweek\u003e(.*?))\u003c\\/th\u003e\u003ctd.*?\u003e(?P\u003cday\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdate\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003ctime\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e\u003ca href=.(?P\u003curl\u003e(.*?)).\u003eboxscore\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cwlt\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cot\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003crecord\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003chome_away\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e\u003ca.*?\u003e(?P\u003copp\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cscore\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003copp_score\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cfirst_downs\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003ctot_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cpass_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003crush_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cto\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003copp_first_downs\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003copp_tot_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003copp_pass_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003copp_rush_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003copp_to\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cexp_off_pts\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cexp_def_pts\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cexp_spt_pts\u003e(.*?))\u003c\\/td\u003e.*?\u003c\\/tr\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pfr_season_draft",
+        "Tag": {
+            "name": "pfr_season_draft",
+            "value": "pfr_season_draft"
+        },
+        "Urls": [
+            "https://www.pro-football-reference.com/years/{year}/draft.htm"
+        ],
+        "Params": [
+            "year"
+        ],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "picks",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ccaption\u003eDrafted.*?Players.*?\u003c\\/caption\u003e.*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ctr \u003e\u003cth.*?data-stat=\"draft_round\".*?\u003e(?P\u003cround\u003e(.*?))\u003c\\/th\u003e\u003ctd.*?data-stat=\"draft_pick\".*?\u003e(?P\u003cpick\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"team\".*?\u003e\u003ca href=\"\\/teams\\/(?P\u003ctag\u003e(...))\\/...._draft.htm\" title=\"(?P\u003cteam\u003e(.*?))\"\u003e.*?\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd.*?data-stat=\"player\".*?\u003e(\u003cstrong\u003e|)\u003ca href=\"(?P\u003curl_player\u003e(\\/players\\/\\w\\/\\w+.htm))\"\u003e(?P\u003cplayer\u003e(.*?))\u003c\\/a\u003e(\u003c\\/strong\u003e|)\u003c\\/td\u003e\u003ctd.*?data-stat=\"pos\".*?\u003e(?P\u003cpos\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"age\".*?\u003e(?P\u003cage\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"year_max\".*?\u003e(?P\u003cyear_max\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"all_pros_first_team\".*?\u003e(?P\u003cfirst_tap\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"pro_bowls\".*?\u003e(?P\u003cpro_bowl\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"years_as_primary_starter\".*?\u003e(?P\u003cstarter\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"career_av\".*?\u003e(?P\u003cav_career\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"draft_av\".*?\u003e(?P\u003cav_team\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"g\".*?\u003e(?P\u003cgames\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"pass_cmp\".*?\u003e(?P\u003cpass_cmp\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"pass_att\".*?\u003e(?P\u003cpass_att\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"pass_yds\".*?\u003e(?P\u003cpass_yd\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"pass_td\".*?\u003e(?P\u003cpass_td\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"pass_int\".*?\u003e(?P\u003cpass_int\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"rush_att\".*?\u003e(?P\u003crush_att\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"rush_yds\".*?\u003e(?P\u003crush_yd\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"rush_td\".*?\u003e(?P\u003crush_td\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"rec\".*?\u003e(?P\u003crec\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"rec_yds\".*?\u003e(?P\u003crec_yd\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"rec_td\".*?\u003e(?P\u003crec_td\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"tackles_solo\".*?\u003e(?P\u003csolo\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"def_int\".*?\u003e(?P\u003cint\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"sacks\".*?\u003e(?P\u003csack\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?data-stat=\"college_id\".*?\u003e\u003ca href=\"(?P\u003curl_college\u003e(.*?))\"\u003e(?P\u003ccollege\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e\u003ctd.*?data-stat=\"college_link\".*?\u003e(\u003ca href=\"(?P\u003curl_college_stats\u003e(.*?))\"\u003e|)(College Stats|)(\u003c\\/a\u003e|)\u003c\\/td\u003e.*?\u003c\\/tr\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pfr_boxscore_games",
+        "Tag": {
+            "name": "pfr_boxscore_games",
+            "value": "pfr_boxscore_games"
+        },
+        "Urls": [
+            "https://www.pro-football-reference.com/boxscores/{id}.htm"
+        ],
+        "Params": [
+            "id"
+        ],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "officials",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv id=.all_officials.*?\u003ctable[^\u003e]+\u003e.*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth[^\u003e]+\u003e(?P\u003ctype\u003e(.*?))\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e\u003ca href=.(?P\u003curl\u003e(.*?)).\u003e(?P\u003cname\u003e(.*?))\u003c\\/a\u003e\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "home_snap_counts",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv id=.all_home_snap_counts..*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth.*?\u003e\u003ca href=.(?P\u003cplayer_url\u003e(.*?)).\u003e(?P\u003cplayer\u003e(.*?))\u003ca\\/\u003e\u003c\\/th\u003e\u003ctd.*?\u003e(?P\u003cposition\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003coff\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003coff_perc\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdef\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdef_perc\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cst\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cst_perc\u003e(.*?))\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "away_snap_counts",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv id=.all_vis_snap_counts..*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth.*?\u003e\u003ca href=.(?P\u003cplayer_url\u003e(.*?)).\u003e(?P\u003cplayer\u003e(.*?))\u003ca\\/\u003e\u003c\\/th\u003e\u003ctd.*?\u003e(?P\u003cposition\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003coff\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003coff_perc\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdef\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdef_perc\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cst\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cst_perc\u003e(.*?))\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "home_drives",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv id=.all_home_drives..*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth.*?\u003e(?P\u003cnumber\u003e(.*?))\u003c\\/th\u003e\u003ctd.*?\u003e(?P\u003cquarter\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003ctime\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003clocation\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e\u003cspan class=.tooltip. tip=.(?P\u003cpass\u003e(\\d+)) Pass, (?P\u003crush\u003e(\\d+)) Rush, (?P\u003cpenalty\u003e(\\d+)) Penalty.\u003e(?P\u003cplays\u003e(.*?))\u003c\\/span\u003e\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003clength\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cnet_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cresult\u003e(.*?))\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "away_drives",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cdiv id=.all_vis_drives..*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth.*?\u003e(?P\u003cnumber\u003e(.*?))\u003c\\/th\u003e\u003ctd.*?\u003e(?P\u003cquarter\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003ctime\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003clocation\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e\u003cspan class=.tooltip. tip=.(?P\u003cpass\u003e(\\d+)) Pass, (?P\u003crush\u003e(\\d+)) Rush, (?P\u003cpenalty\u003e(\\d+)) Penalty.\u003e(?P\u003cplays\u003e(.*?))\u003c\\/span\u003e\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003clength\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cnet_yds\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cresult\u003e(.*?))\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "plays",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ccaption\u003eFull Play-By-Play.*?\u003c\\/caption\u003e.*?\u003c\\/table\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cth.*?\u003e(?P\u003cquarter\u003e(.*?))\u003c\\/th\u003e\u003ctd.*?\u003e(?P\u003ctime\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdown\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdistance\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003clocation\u003e(.*?))\u003c\\/td\u003e\u003ctd.*?\u003e(?P\u003cdescription\u003e(.*?))\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    }
+]

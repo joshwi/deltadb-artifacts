@@ -1,0 +1,170 @@
+[
+    {
+        "Name": "wiki_film",
+        "Tag": {
+            "name": "wiki_film",
+            "value": "wiki_film"
+        },
+        "Urls": [
+            "https://en.wikipedia.org/wiki/Lists_of_American_films"
+        ],
+        "Params": [],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "year",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003cli\u003e\u003ca href=\"(?P\u003curl\u003e([\\/[\\w+]+))\" title=\"List of American films of (?P\u003cyear\u003e(\\d{4}))\"\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "wiki_film_year",
+        "Tag": {
+            "name": "wiki_film_year",
+            "value": "wiki_film_year"
+        },
+        "Urls": [
+            "https://en.wikipedia.org/wiki/List_of_American_films_of_{year}"
+        ],
+        "Params": [
+            "year"
+        ],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "movie",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctbody\u003e.*\u003c\\/tbody\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "(?ms)\u003ctd\u003e\u003ci\u003e\u003ca href=\"(?P\u003curl\u003e((\\/[^\\s\\n]+)+))\" title=\".*?\"\u003e(?P\u003ctitle\u003e(.*?))\u003c\\/a\u003e\\s{0,}\u003c\\/i\u003e\\s{0,}\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "wiki_movie",
+        "Tag": {
+            "name": "wiki_movie",
+            "value": "wiki_movie"
+        },
+        "Urls": [
+            "https://en.wikipedia.org{url}"
+        ],
+        "Params": [
+            "url"
+        ],
+        "Keys": null,
+        "Parser": [
+            {
+                "label": "producer",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003eProduced by\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e.*?\u003c\\/td\u003e\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ca.href=\"(?P\u003curl\u003e(.*?))\"[^\u003e]+\u003e(?P\u003cproducer\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "director",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003eDirected by\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e.*?\u003c\\/td\u003e\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ca.href=\"(?P\u003curl\u003e(.*?))\"[^\u003e]+\u003e(?P\u003cdirector\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "screenplay",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003eScreenplay by\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e.*?\u003c\\/td\u003e\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ca.href=\"(?P\u003curl\u003e(.*?))\"[^\u003e]+\u003e(?P\u003cwriter\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "cast",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003eStarring\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e.*?\u003c\\/td\u003e\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ca.href=\"(?P\u003curl\u003e(.*?))\"[^\u003e]+\u003e(?P\u003cactor\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "score",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003eMusic by\u003c\\/th\u003e\u003ctd[^\u003e]+\u003e.*?\u003c\\/td\u003e\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ca.href=\"(?P\u003curl\u003e(.*?))\"[^\u003e]+\u003e(?P\u003cartist\u003e(.*?))\u003c\\/a\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "releaseDate",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003e.*?Release date.*?\u003c\\/th\u003e.*?\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003cspan[^\u003e]+\u003e(?P\u003creleaseDate\u003e(\\d{4}-\\d{2}-\\d{2}))\u003c\\/span\u003e",
+                        "Value": {}
+                    }
+                ]
+            },
+            {
+                "label": "runtime",
+                "tags": null,
+                "regex": [
+                    {
+                        "Name": "(?ms)\u003ctr\u003e\u003cth[^\u003e]+\u003e.*?Running time.*?\u003c\\/th\u003e.*?\u003c\\/tr\u003e",
+                        "Value": {}
+                    },
+                    {
+                        "Name": "\u003ctd[^\u003e]+\u003e(?P\u003clength\u003e(\\d+)).minutes.*?\u003c\\/td\u003e",
+                        "Value": {}
+                    }
+                ]
+            }
+        ]
+    }
+]
