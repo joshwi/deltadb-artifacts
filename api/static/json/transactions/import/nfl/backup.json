@@ -1,5 +1,8 @@
 [
     "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/colors.csv' as row MERGE (n:nfl_colors {label: row.label}) SET n += row",
     "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/teams.csv' as row MERGE (n:nfl_teams {label: row.label}) SET n += row",
-    "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/games.csv' as row MERGE (n:nfl_games {label: row.label}) SET n += row"
+    "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/games.csv' as row MERGE (n:nfl_games {label: row.label}) SET n += row",
+    "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/seasons.csv' as row MERGE (n:nfl_seasons {label: row.label}) SET n += row",
+    "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/conferences.csv' as row MERGE (n:nfl_conferences {label: row.label}) SET n += row",
+    "LOAD CSV WITH HEADERS FROM 'file:///deltadb-backup/nfl/divisions.csv' as row MERGE (n:nfl_divisions {label: row.label}) SET n += row"
 ]
